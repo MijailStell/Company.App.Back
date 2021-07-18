@@ -1,11 +1,13 @@
 # Company.App.Back
 ## Features
+```
 30 min
 VSCode
 NetCore SDK
 Postman/WebBrowser
 GitHub (create repo https://github.com/{username}/Company.App.Back)
 Azure & AzureDevOpsAccount
+```
 
 ##  -------  Git and manage Code  -------
 
