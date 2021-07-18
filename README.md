@@ -33,7 +33,7 @@ cd Distributed.Services
 dotnet build
 dotnet run
 
-#open browser: http://localhost:5000/swagger
+#open browser: http://localhost:5000/weatherforecast
 #press ctrl + c for shut down
 
 cd ..
