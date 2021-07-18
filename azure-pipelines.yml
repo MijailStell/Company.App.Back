@@ -1,0 +1,58 @@
+trigger:
+- master
+
+pool: 'DevOps'
+
+variables:
+  artifactName: 'Net5WebApi'
+  buildConfiguration: 'Release'
+  connectionKey: 'Net5WebApi'
+
+steps:
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'restore'
+    projects: '**/*.csproj'
+    feedsToUse: 'select'
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: test
+    projects: '**/*Test/*.csproj'
+    arguments: '--configuration $(buildConfiguration)'
+
+- task: SonarQubePrepare@4
+  displayName: 'Prepare sonarqube analisys'
+  inputs:
+    SonarQube: 'SonarQube'
+    scannerMode: 'MSBuild'
+    projectKey: '$(connectionKey)'
+    projectName: '$(connectionKey)'
+
+- task: DotNetCoreCLI@2
+  displayName: 'Build solution'
+  inputs:
+    command: 'build'
+    projects: '**/*.csproj'
+    arguments: '--configuration $(buildConfiguration)'
+
+- task: SonarQubeAnalyze@4
+  displayName: 'Sonarqube analisys'
+
+- task: SonarQubePublish@4
+  displayName: 'Sonarqube publish'
+  inputs:
+    pollingTimeoutSec: '300'
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'publish'
+    publishWebProjects: true
+    arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact'
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: '$(artifactName)'
+    publishLocation: 'Container'
