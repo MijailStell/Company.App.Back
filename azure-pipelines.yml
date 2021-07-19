@@ -19,7 +19,7 @@ steps:
   inputs:
     command: test
     projects: '**/*Test/*.csproj'
-    arguments: '--configuration $(buildConfiguration) --codeCoverageEnabled True'
+    arguments: '--configuration $(buildConfiguration)'
 
 - task: SonarQubePrepare@4
   displayName: 'Prepare sonarqube analisys'
