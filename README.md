@@ -8,6 +8,7 @@ Postman/WebBrowser
 GitHub (create repo https://github.com/{username}/Company.App.Back)
 Azure & AzureDevOpsAccount
 ```
+![Esquema](https://user-images.githubusercontent.com/1031887/126097194-d9148b5f-4854-471b-b374-b328f97c4822.png)
 
 ##  -------  Git and manage Code  -------
 
