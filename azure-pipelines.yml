@@ -4,9 +4,9 @@ trigger:
 pool: 'DevOps'
 
 variables:
-  artifactName: 'Net5WebApi'
+  artifactName: 'Company.App.Back'
   buildConfiguration: 'Release'
-  connectionKey: 'Net5WebApi'
+  connectionKey: 'Company.App.Back'
 
 steps:
 - task: DotNetCoreCLI@2
