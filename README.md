@@ -16,7 +16,7 @@ Azure & AzureDevOpsAccount
 #Crear directorio base de los proyectos y vincular cambios con github
 mkdir Company.App.Back
 cd Company.App.Back
-echo "# Company.App.Back" >> README.md
+echo # Company.App.Back >> README.md
 git init
 git add .
 git commit -m "add readme"
@@ -34,7 +34,7 @@ cd Distributed.Services
 dotnet build
 dotnet run
 
-#open browser: http://localhost:3002/weatherforecast
+#open browser: http://localhost:5000/weatherforecast
 #press ctrl + c for shut down
 
 cd ..
@@ -91,9 +91,9 @@ trigger:
 pool: 'DevOps'
 
 variables:
-  artifactName: 'Net5WebApi'
+  artifactName: 'Company.App.Back'
   buildConfiguration: 'Release'
-  connectionKey: 'Net5WebApi'
+  connectionKey: 'Company.App.Back'
 
 steps:
 - task: DotNetCoreCLI@2
@@ -159,20 +159,20 @@ steps:
 #Seleccionar IIS website deployment y colocarle de nombre "dev"
 #Elegir tab "tasks"
 Sección dev:
-	WebSiteName: Net5WebApi
+	WebSiteName: Company.App.Back
 	Binding Port: 3002
 Sección IIS Deployment
 	Deployment Group: IIS Server
 IIS Web Ap Manage
-	Physical path: %SystemDrive%\inetpub\wwwroot\Net5WebApi
+	Physical path: %SystemDrive%\inetpub\wwwroot\Company.App.Back
 	Create or update app pool: check
 	Application Pool:
-		Name: Net5WebApi
+		Name: Company.App.Back
 		.NET version: No manage code
 IIS Web App Deploy
 	Remove Additional Files at Destination: check
 	
-#Renombrar a Net5WebApi
+#Renombrar a Company.App.Back
 #Asignar Artifact. 
 	Project: DevOps
 	Source: {username}.Company.App.Back
