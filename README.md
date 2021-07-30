@@ -34,7 +34,7 @@ cd Distributed.Services
 dotnet build
 dotnet run
 
-#open browser: http://localhost:5000/weatherforecast
+#open browser: http://localhost:3002/weatherforecast
 #press ctrl + c for shut down
 
 cd ..
@@ -67,8 +67,17 @@ git push -u origin master
 ##  -------  Continuous Integration on Premise  -------
 ```
 #Acceder a https://dev.azure.com/{username}/_settings/agentpools?poolId=1&view=jobs y crear un agente on-premise llamada DevOps
+```
+![3 Agents](https://user-images.githubusercontent.com/1031887/127592369-545251d2-2908-40f9-8917-72550af66632.PNG)
+```
 #Acceder a https://dev.azure.com/{username}/_settings/deploymentpools y crear un Pool de despliegue on-premise llamado IIS-Server
+```
+![3 DeploymentGroup](https://user-images.githubusercontent.com/1031887/127592393-59a2daef-1588-434b-80bb-e45843d1f489.PNG)
+```
 #Acceder a https://dev.azure.com/{username}/DevOps/_settings/adminservices y crear una conexión hacia sonarqube server
+```
+![3 ServiceConnection](https://user-images.githubusercontent.com/1031887/127592788-1c501b2b-928b-4798-9ad7-e483d8dbec8f.PNG)
+```
 #Acceder a https://dev.azure.com/{username}/DevOps/_build
 #Crear pipeline
 #Seleccionar repositorio GitHub
@@ -137,6 +146,11 @@ steps:
 	
 #Guardar y ejecutar. Se realizará la CI en azuredevops.
 ```
+![1 Summary](https://user-images.githubusercontent.com/1031887/127592354-452c14fe-f1a2-4852-b1cd-0b4ef42386b1.PNG)
+![2 Test](https://user-images.githubusercontent.com/1031887/127592364-f71c8398-e384-4ed2-861a-d4b38a42b850.PNG)
+![3 Release](https://user-images.githubusercontent.com/1031887/127592407-baa18d83-7284-4675-93bc-b26aaf0f19a5.PNG)
+![4 SonarService](https://user-images.githubusercontent.com/1031887/127592415-100c21e4-0cdc-423e-90f1-08798aa27ec9.PNG)
+![5 Sonarqube](https://user-images.githubusercontent.com/1031887/127592422-139a525a-b79a-4bf7-bf93-a9253873fd1f.PNG)
 
 ##  -------  Continuous Delivery on Premise  -------
 ```
@@ -146,7 +160,7 @@ steps:
 #Elegir tab "tasks"
 Sección dev:
 	WebSiteName: Net5WebApi
-	Binding Port: 5000
+	Binding Port: 3002
 Sección IIS Deployment
 	Deployment Group: IIS Server
 IIS Web Ap Manage
@@ -166,6 +180,8 @@ IIS Web App Deploy
 #Seleccionar artefacto y 
 	Continuous deployment trigger: activado
 ```
+![1 Deploy](https://user-images.githubusercontent.com/1031887/127592429-5e6767a0-3749-405c-9562-fe507bae2072.PNG)
+
 
 ##  -------  Git and manage Code  -------
 ```
@@ -192,5 +208,7 @@ git push -u origin master
 #Revisar Sumary Test
 #Revisar Releases
 #Revsar Extension Sonarqube
-#Revisar el despliegue en IIS Local puerto 5000.
+#Revisar el despliegue en IIS Local puerto 3002.
 ```
+![7 IISBack](https://user-images.githubusercontent.com/1031887/127593339-11002288-7e3c-4031-8a82-b5b6573aa280.PNG)
+![7 IISBack2](https://user-images.githubusercontent.com/1031887/127593524-8c469d59-5600-475c-933b-c4682ba0abe1.PNG)
